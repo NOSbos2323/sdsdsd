@@ -9,21 +9,7 @@ import { useNavigate } from "react-router-dom";
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  // Check if user is already logged in
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      try {
-        const userData = JSON.parse(user);
-        if (userData.loggedIn) {
-          navigate("/home", { replace: true });
-        }
-      } catch (error) {
-        console.error("Error parsing user data:", error);
-        localStorage.removeItem("user");
-      }
-    }
-  }, [navigate]);
+  // Ensure login button is always visible - no auto-redirect logic
 
   const handleGoogleSuccess = (credentialResponse: any) => {
     console.log("Google Sign-In Success:", credentialResponse);
